@@ -11,12 +11,12 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 21;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "Shure Tech Mono Nerd Font:size=12" };
-static const char dmenufont[]       = "Shure Tech Mono Nerd Font:size=12";
+static const int user_bh            = 20;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const char *fonts[]          = { "Shure Tech Mono Nerd Font:size=11", "Font Awesome 6 Free Brands Regular:size=10", "Font Awesome 6 Free Solid:size=10", "Font Awesome 6 Regular:size=10" };
+static const char dmenufont[]       = "Shure Tech Mono Nerd Font:size=11";
 static const char col_gray1[]       = "#1A1826";
 static const char col_gray2[]       = "#161320";
-static const char col_gray3[]       = "#DDB6F2";
+static const char col_gray3[]       = "#E8A2AF";
 static const char col_gray4[]       = "#6E6C7E";
 static const char col_cyan[]        = "#161320";
 static const char *colors[][3]      = {
@@ -34,13 +34,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
-	{ "Pavucontrol", NULL, NULL,           0,         1,          0,           0,        -1 },
-        { "Arandr", NULL,     NULL,            0,         1,          0,           0,        -1 },
+	/* class         instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",         NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Firefox",      NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "St",           NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ NULL,           NULL,    "Event Tester",  0,         0,          0,           1,        -1 }, /* xev */
+	{ "Pavucontrol",  NULL,     NULL,           0,         1,          0,           0,        -1 },
+        { "Arandr",       NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Lxappearance", NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Leafpad",      NULL,     NULL,           0,         1,          0,           0,        -1 },
 };
 
 /* layout(s) */
@@ -82,7 +84,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } }, 
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+        { MODKEY,                       XK_I,      incnmaster,     {.i = -1 } },	
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_h,      movestack,      {.i = +1 } },
@@ -117,7 +120,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_O,      incrogaps,      {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_Y,      incrigaps,      {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_O,      incrigaps,      {.i = -1 } },
-	{ MODKEY|Mod1Mask,              XK_0,      togglegaps,     {0} },
+	{ MODKEY|ControlMask,           XK_9,      togglegaps,     {0} },
 	{ MODKEY|Mod1Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_y,      incrihgaps,     {.i = +1 } },
 	{ MODKEY,                       XK_o,      incrihgaps,     {.i = -1 } },

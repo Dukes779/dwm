@@ -14,11 +14,11 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 20;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Shure Tech Mono Nerd Font:size=11", "Font Awesome 6 Free Brands Regular:size=10", "Font Awesome 6 Free Solid:size=10", "Font Awesome 6 Regular:size=10" };
 static const char dmenufont[]       = "Shure Tech Mono Nerd Font:size=11";
-static const char col_gray1[]       = "#1A1826";
-static const char col_gray2[]       = "#161320";
+static const char col_gray1[]       = "#0B0716";
+static const char col_gray2[]       = "#0B0716";
 static const char col_gray3[]       = "#E8A2AF";
 static const char col_gray4[]       = "#6E6C7E";
-static const char col_cyan[]        = "#161320";
+static const char col_cyan[]        = "#0B0716";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray4, col_gray1, col_gray2 },
@@ -141,7 +141,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,      quit,           {1} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} }, 
 };
 
 /* button definitions */

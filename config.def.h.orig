@@ -16,18 +16,27 @@ static const char *fonts[]          = { "Shure Tech Mono Nerd Font:size=11","Shu
 static const char dmenufont[]       = "Shure Tech Mono Nerd Font:size=11";
 static const char col_gray1[]       = "#0B0716";
 static const char col_gray2[]       = "#0B0716";
-static const char col_gray3[]       = "#E8A2AF";
+static const char col_gray3[]       = "#ABE9B3";
 static const char col_gray4[]       = "#6E6C7E";
 static const char col_cyan[]        = "#0B0716";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray4, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray1, col_gray3,  col_gray2  },
+	[SchemeSel]  = { col_gray3, col_gray1,  col_gray2  },
 };
 
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "", "", ""};
+
+static const char *tagsel[][2] = {
+	{ "#F5C2E7", "#0B0716" },
+	{ "#DDB6F2", "#0B0716" },
+	{ "#C9CBFF", "#0B0716" },
+	{ "#F28FAD", "#0B0716" },
+	{ "#F2CDCD", "#0B0716" },
+	{ "#ABE9B3", "#0B0716" },
+};
 
 static const Rule rules[] = {
 	/* xprop(1):

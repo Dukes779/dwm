@@ -16,13 +16,13 @@ static const char *fonts[]          = { "Shure Tech Mono Nerd Font:size=11","Shu
 static const char dmenufont[]       = "Shure Tech Mono Nerd Font:size=11";
 static const char col_gray1[]       = "#0B0716";
 static const char col_gray2[]       = "#0B0716";
-static const char col_gray3[]       = "#ABE9B3";
+static const char col_gray3[]       = "#0B0716";
 static const char col_gray4[]       = "#6E6C7E";
-static const char col_cyan[]        = "#0B0716";
+static const char col_cyan[]        = "#E8A2AF";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray4, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray3, col_gray1,  col_gray2  },
+	[SchemeSel]  = { col_gray3, col_cyan,  col_gray2  },
 };
 
 
@@ -98,7 +98,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_cyan, "-sf", col_gray3, NULL };
 static const char *termcmd[]   = { "st", NULL };
 
 #include "movestack.c"

@@ -16,7 +16,7 @@ static const char *fonts[]          = { "Shure Tech Mono Nerd Font:size=10","Shu
 static const char dmenufont[]       = "Shure Tech Mono Nerd Font:size=10";
 static const char col_gray1[]       = "#0B0716";
 static const char col_gray2[]       = "#0B0716";
-static const char col_gray3[]       = "#0B0716"
+static const char col_gray3[]       = "#0B0716";
 static const char col_gray4[]       = "#6E6C7E";
 static const char col_cyan[]        = "#E8A2AF";
 static const char *colors[][3]      = {

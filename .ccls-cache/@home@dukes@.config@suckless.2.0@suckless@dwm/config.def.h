@@ -12,7 +12,7 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 20;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "cantarell:size=10", "ShureTechMonoNerdFont:pixelsize=19:antialias=true:autohint=true"};
+static const char *fonts[]          = { "Shure Tech Mono Nerd Font:size=10"};
 static const char dmenufont[]       = "Shure Tech Mono Nerd Font:size=10";
 static const char col_gray1[]       = "#0B0716";
 static const char col_gray2[]       = "#0B0716";
@@ -51,15 +51,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class         instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",         NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox",      NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "St",           NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,           NULL,    "Event Tester",  0,         0,          0,           1,        -1 }, /* xev */
-	{ "Pavucontrol",  NULL,     NULL,           0,         1,          0,           0,        -1 },
-        { "Arandr",       NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Lxappearance", NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Leafpad",      NULL,     NULL,           0,         1,          0,           0,        -1 },
+	/* class             instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "Gimp",             NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "firefox",          NULL,     NULL,           2,         0,          0,          -1,        -1 },
+	{ "St",               NULL,     NULL,           1,         0,          1,           0,        -1 },
+	{ NULL,               NULL,    "Event Tester",  0,         0,          0,           1,        -1 }, /* xev */
+	{ "Pavucontrol",      NULL,     NULL,           0,         1,          0,           0,        -1 },
+    { "Arandr",           NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Lxappearance",     NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "Leafpad",          NULL,     NULL,           0,         1,          0,           0,        -1 },
+    { "discord",          NULL,     NULL,           4,         0,          0,           0,        -1 },
 };
 
 /* layout(s) */
@@ -105,15 +106,15 @@ static const char *termcmd[]   = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd }  },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("firefox") },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("pcmanfm") },
-        { MODKEY,                       XK_p,      spawn,          SHCMD("~/Documents/Scripts/lock.sh" ) },
+    { MODKEY,                       XK_p,      spawn,          SHCMD("~/Documents/Scripts/lock.sh" ) },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-        { MODKEY,                       XK_I,      incnmaster,     {.i = -1 } },	
+    { MODKEY,                       XK_I,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_h,      movestack,      {.i = +1 } },
@@ -121,10 +122,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_a,      setlayout,      {.v = &layouts[1]} }, 
+	{ MODKEY,                       XK_a,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-/*      { MODKEY,                       XK_x,      setlayout,      {.v = &layouts[]} }, */
-        { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[3]} }, 
+/*  { MODKEY,                       XK_x,      setlayout,      {.v = &layouts[]}  }, */
+    { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[3]} },
 /*	{ MODKEY|ControlMask,           XK_x,      setlayout,      {.v = &layouts[5]} }, */
 /*	{ MODKEY|ControlMask,           XK_a,      setlayout,      {.v = &layouts[6]} }, */
 /*	{ MODKEY|ControlMask,           XK_t,      setlayout,      {.v = &layouts[7]} }, */
@@ -163,7 +164,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {1} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} }, 
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} },
 };
 
 /* button definitions */

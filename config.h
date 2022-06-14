@@ -15,14 +15,14 @@ static const int user_bh            = 20;        /* 0 means that dwm will calcul
 static const char *fonts[]          = { "Shure Tech Mono Nerd Font:size=10"};
 static const char dmenufont[]       = "Shure Tech Mono Nerd Font:size=10";
 static const char col_gray1[]       = "#0B0716";
-static const char col_gray2[]       = "#0B0716";
+static const char col_gray2[]       = "#cdd6f4";
 static const char col_gray3[]       = "#0B0716";
 static const char col_gray4[]       = "#6E6C7E";
 static const char col_cyan[]        = "#E8A2AF";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray4, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray3, col_cyan,  col_gray2  },
+	[SchemeNorm] = { col_gray2, col_gray1, col_gray1  },
+	[SchemeSel]  = { col_gray3, col_cyan,  col_gray1  },
 };
 
 
@@ -148,8 +148,9 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioNext,          spawn, SHCMD("playerctl next") },
 	{ 0,                            XF86XK_MonBrightnessUp,    spawn, SHCMD("xbacklight -inc 10") },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn, SHCMD("xbacklight -dec 10") },
-	{ 0,                            XK_Print,                  spawn, SHCMD("flameshot full -p ~/Pictures/Screenshots") },
+	/* { 0,                            XK_Print,                  spawn, SHCMD("flameshot full -p ~/Pictures/Screenshots") }, */
 	{ MODKEY|Mod4Mask,              XK_Y,      incrgaps,       {.i = +1 } },
+	{ 0,                            XK_Print,                  spawn, SHCMD("awesome-flameshot") },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_o,      incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_e,      togglegaps,     {0} },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_O,      defaultgaps,    {0} },

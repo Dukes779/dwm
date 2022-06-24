@@ -29,23 +29,6 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
-static const char *tagsel[][2] = {
-	{ "#F5C2E7", "#0B0716" },
-	{ "#DDB6F2", "#0B0716" },
-	{ "#C9CBFF", "#0B0716" },
-	{ "#F28FAD", "#0B0716" },
-	{ "#F2CDCD", "#0B0716" },
-	{ "#ABE9B3", "#0B0716" },
-	{ "#F2CDCD", "#0B0716" },
-	{ "#F28FAD", "#0B0716" },
-	{ "#DDB6F2", "#0B0716" },
-};
-
-static const unsigned int ulinepad	= 4;	/* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
-static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
-static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
-
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class

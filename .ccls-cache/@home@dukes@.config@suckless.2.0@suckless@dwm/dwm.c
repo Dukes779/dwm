@@ -73,6 +73,14 @@ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
 enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
 enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
        ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
+enum { SchemeBrBlack, SchemeBrWhite, SchemeFloat,
+       SchemeTag, SchemeTag1, SchemeTag2, SchemeTag3, 
+       SchemeTag4, SchemeTag5, SchemeTag6, SchemeTag7, 
+       SchemeTag8, SchemeTag9, SchemeLayout, 
+       SchemeTitle, SchemeTitleFloat,
+       SchemeTitle1, SchemeTitle2, SchemeTitle3, 
+       SchemeTitle4, SchemeTitle5, SchemeTitle6, 
+       SchemeTitle7, SchemeTitle8, SchemeTitle9 }; /* for colorful */
 
 typedef union {
 	int i;
@@ -136,6 +144,8 @@ struct Monitor {
 	unsigned int seltags;
 	unsigned int sellt;
 	unsigned int tagset[2];
+    unsigned int colorfultitle;
+	unsigned int colorfultag;
 	int showbar;
 	int topbar;
 	Client *clients;
@@ -246,6 +256,8 @@ static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void togglebar(const Arg *arg);
+static void togglecolorfultitle();
+static void togglecolorfultag();
 static void togglefloating(const Arg *arg);
 static void togglesticky(const Arg *arg);
 static void toggletag(const Arg *arg);
@@ -756,6 +768,8 @@ createmon(void)
 	m->gappiv = gappiv;
 	m->gappoh = gappoh;
 	m->gappov = gappov;
+    m->colorfultag = colorfultag ? colorfultag : 0;
+    m->colorfultitle = colorfultitle ? colorfultitle : 0;
 	m->lt[0] = &layouts[0];
 	m->lt[1] = &layouts[1 % LENGTH(layouts)];
 	strncpy(m->ltsymbol, layouts[0].symbol, sizeof m->ltsymbol);
@@ -967,12 +981,37 @@ drawbar(Monitor *m)
 			x += w;
 	}
 	w = blw = TEXTW(m->ltsymbol);
-	drw_setscheme(drw, scheme[SchemeNorm]);
+	drw_setscheme(drw, scheme[SchemeLayout]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+     
+       if (selmon->colorfultag)
+                        drw_setscheme(
+                                drw,
+                                scheme[m->tagset[m->seltags] & 1 << i
+                                        ? tagschemes[i] : SchemeTag]
+                        );
+                else
+                        drw_setscheme(
+                                drw,
+                                scheme[m->tagset[m->seltags] & 1 << i
+                                ? SchemeSel : SchemeTag]
+                        );
 
 	if ((w = m->ww - tw - x) > bh) {
 		if (m->sel) {
-			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
+            if (selmon->colorfultitle) {
+                                for (i = 0; i < LENGTH(tags); i++)
+                                        if (selmon->sel->tags & 1 << i)
+                                                drw_setscheme(
+                                                        drw,
+                                                        scheme[titleschemes[i]]
+                                                );
+                        } else {
+                                int s = (m == selmon) && m->sel->isfloating
+                                                ? SchemeTitleFloat
+                                                : SchemeTitle;
+                                drw_setscheme(drw, scheme[s]);
+                        }
 			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
@@ -1952,6 +1991,22 @@ togglebar(const Arg *arg)
 	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
 	arrange(selmon);
 }
+
+void
+togglecolorfultitle()
+{
+        selmon->colorfultitle = !selmon->colorfultitle;
+        drawbar(selmon);
+}
+
+void
+togglecolorfultag()
+{
+        selmon->colorfultag = !selmon->colorfultag;
+        drawbar(selmon);
+}
+
+
 
 void
 togglefloating(const Arg *arg)

@@ -18,31 +18,32 @@ static       char font[]                  = { "Shure Tech Mono Nerd Font:size=10
 static       char dmenufont[]             = "Shure Tech Mono Nerd Font:size=10";
 static const char *fonts[]                = { font };
 static       char normbgcolor[]           = "#0B0716";
-static       char normbordercolor[]       = "#0B0716";
+static       char normbordercolor[]       = "#a6e3a1";
 static       char normfgcolor[]           = "#6E6C7E";
 static       char selfgcolor[]            = "#cdd6f4";
 static       char selbordercolor[]        = "#0B0716";
 static       char selbgcolor[]            = "#E8A2AF";
+#include "themes/catppuccin.h" 
 static       char *colors[][3]            = {
        /*               fg           bg           border   */
-       [SchemeNorm] = { selfgcolor, normbgcolor, normbordercolor },
+       [SchemeNorm] = { selfgcolor, normbgcolor, normbgcolor },
        [SchemeSel]  = { normbgcolor,  selbgcolor,  selbordercolor  },
 
        /* The Beginning of something */
-    [SchemeTag]        = { normbgcolor,    selbgcolor,    normbgcolor},
-    [SchemeTag1]       = { normbgcolor,          selbgcolor,  normbgcolor },
-	[SchemeTag2]       = { normbgcolor,         selbgcolor,  normbgcolor },
-    [SchemeTag3]       = { normbgcolor,   selbgcolor,  normbgcolor  },
-    [SchemeTag4]       = { normbgcolor,     selbgcolor,  normbgcolor},
-    [SchemeTag5]       = { normbgcolor,  selbgcolor,  normbgcolor},
-	[SchemeTag6]       = { normbgcolor,     selbgcolor,  normbgcolor},
-	[SchemeTag7]       = { normbgcolor,    selbgcolor,  normbgcolor},
-	[SchemeTag8]       = { normbgcolor,      selbgcolor,  normbgcolor},
-	[SchemeTag9]       = { normbgcolor,      selbgcolor,  normbgcolor},
-	[SchemeLayout]     = { normbgcolor,       selbgcolor,    normbgcolor},
-	[SchemeTitle]      = { normbgcolor,          selbgcolor,    normbgcolor},
-	[SchemeTitleFloat] = { normbgcolor,     selbgcolor,    normbgcolor},
-	[SchemeTitle1]     = { normbgcolor,          selbgcolor,    normbgcolor},
+    [SchemeTag]        = { normfgcolor ,        normbgcolor,    normbgcolor},
+    [SchemeTag1]       = { black ,        normbgcolor,  normbgcolor },
+	[SchemeTag2]       = { gray2,        normbgcolor,  normbgcolor },
+    [SchemeTag3]       = { gray3,        normbgcolor,  normbgcolor  },
+    [SchemeTag4]       = { gray4,        normbgcolor,  normbgcolor},
+    [SchemeTag5]       = { blue,        normbgcolor,  normbgcolor},
+	[SchemeTag6]       = { green,        normbgcolor,  normbgcolor},
+	[SchemeTag7]       = { red ,        normbgcolor,  normbgcolor},
+	[SchemeTag8]       = { orange,        normbgcolor,  normbgcolor},
+	[SchemeTag9]       = { yellow,        normbgcolor,  normbgcolor},
+	[SchemeLayout]     = { gray3,    normbgcolor,    normbgcolor},
+	[SchemeTitle]      = { yellow ,    normbgcolor,    normbgcolor},
+	[SchemeTitleFloat] = { normbordercolor,    normbgcolor,    normbgcolor},
+	[SchemeTitle1]     = { normbgcolor,         selbgcolor,    normbgcolor},
 	[SchemeTitle2]     = { normbgcolor,         selbgcolor,    normbgcolor},
     [SchemeTitle3]     = { normbgcolor,   selbgcolor,    normbgcolor},
     [SchemeTitle4]     = { normbgcolor,     selbgcolor,    normbgcolor},

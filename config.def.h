@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 /* appearance */
-static       unsigned int borderpx        = 1;        /* border pixel of windows */
-static       unsigned int snap            = 32;       /* snap pixel */
+static const unsigned int borderpx        = 1;        /* border pixel of windows */
+static const unsigned int snap            = 32;       /* snap pixel */
 static const unsigned int gappih          = 7;       /* horiz inner gap between windows */
 static const unsigned int gappiv          = 7;       /* vert inner gap between windows */
 static const unsigned int gappoh          = 7;       /* horiz outer gap between windows and screen edge */
@@ -11,47 +11,45 @@ static const unsigned int colorfultitle   = 1;       /* 0 means title use Scheme
 static const unsigned int colorfultag     = 1;       /* 0 means use SchemeSel for selected tag */
 static       int smartgaps                = 0;
 static const int swallowfloating          = 0;        /* 1 means swallow floating windows by default */
-static       int showbar                  = 1;        /* 0 means no bar */
-static       int topbar                   = 1;        /* 0 means bottom bar */
+static const int showbar                  = 1;        /* 0 means no bar */
+static const int topbar                   = 1;        /* 0 means bottom bar */
 static const int user_bh                  = 20;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static       char font[]                  = { "Shure Tech Mono Nerd Font:size=10"};
-static       char dmenufont[]             = "Shure Tech Mono Nerd Font:size=10";
-static const char *fonts[]                = { font };
-static       char normbgcolor[]           = "#0B0716";
-static       char normbordercolor[]       = "#a6e3a1";
-static       char normfgcolor[]           = "#6E6C7E";
-static       char selfgcolor[]            = "#cdd6f4";
-static       char selbordercolor[]        = "#0B0716";
-static       char selbgcolor[]            = "#E8A2AF";
+static const char *fonts[]                = { "Shure Tech Mono Nerd Font:size=10"};
+static const char dmenufont[]             = "Shure Tech Mono Nerd Font:size=10";
+static const char col_gray1[]             = "#0B0716";
+static const char col_gray2[]             = "#a6e3a1";
+static const char col_gray3[]             = "#6E6C7E";
+static const char col_gray4[]             = "#cdd6f4";
+static const char cyan[]                  = "#E8A2AF" ;
 #include "themes/catppuccin.h" 
-static       char *colors[][3]            = {
-       /*               fg           bg           border   */
-       [SchemeNorm] = { selfgcolor, normbgcolor, normbgcolor },
-       [SchemeSel]  = { normbgcolor,  selbgcolor,  selbordercolor  },
+static const char *colors[][3]      = {
+	/*               fg         bg         border   */
+	[SchemeNorm] = {col_gray4,  col_gray1,col_gray1 },
+	[SchemeSel]  = { col_gray4, cyan,     col_gray1 },
 
        /* The Beginning of something */
-    [SchemeTag]        = { normfgcolor ,        normbgcolor,    normbgcolor},
-    [SchemeTag1]       = { black ,        normbgcolor,  normbgcolor },
-	[SchemeTag2]       = { gray2,        normbgcolor,  normbgcolor },
-    [SchemeTag3]       = { gray3,        normbgcolor,  normbgcolor  },
-    [SchemeTag4]       = { gray4,        normbgcolor,  normbgcolor},
-    [SchemeTag5]       = { blue,        normbgcolor,  normbgcolor},
-	[SchemeTag6]       = { green,        normbgcolor,  normbgcolor},
-	[SchemeTag7]       = { red ,        normbgcolor,  normbgcolor},
-	[SchemeTag8]       = { orange,        normbgcolor,  normbgcolor},
-	[SchemeTag9]       = { yellow,        normbgcolor,  normbgcolor},
-	[SchemeLayout]     = { gray3,    normbgcolor,    normbgcolor},
-	[SchemeTitle]      = { yellow ,    normbgcolor,    normbgcolor},
-	[SchemeTitleFloat] = { normbordercolor,    normbgcolor,    normbgcolor},
-	[SchemeTitle1]     = { normbgcolor,         selbgcolor,    normbgcolor},
-	[SchemeTitle2]     = { normbgcolor,         selbgcolor,    normbgcolor},
-    [SchemeTitle3]     = { normbgcolor,   selbgcolor,    normbgcolor},
-    [SchemeTitle4]     = { normbgcolor,     selbgcolor,    normbgcolor},
-    [SchemeTitle5]     = { normbgcolor,  selbgcolor,    normbgcolor},
-	[SchemeTitle6]     = { normbgcolor,     selbgcolor,    normbgcolor},
-	[SchemeTitle7]     = { normbgcolor,    selbgcolor,    normbgcolor},
-	[SchemeTitle8]     = { normbgcolor,      selbgcolor,    normbgcolor},
-	[SchemeTitle9]     = { normbgcolor,      selbgcolor,    normbgcolor},
+    [SchemeTag]        = { col_gray3 ,        col_gray1,    col_gray1},
+    [SchemeTag1]       = { black ,            col_gray1,    col_gray1},
+    [SchemeTag2]       = { gray3,             col_gray1,    col_gray1},
+    [SchemeTag3]       = { gray2,             col_gray1,    col_gray1},
+    [SchemeTag4]       = { gray4,             col_gray1,    col_gray1},
+    [SchemeTag5]       = { blue,              col_gray1,    col_gray1},
+	[SchemeTag6]       = { green,             col_gray1,    col_gray1},
+	[SchemeTag7]       = { red ,              col_gray1,    col_gray1},
+	[SchemeTag8]       = { orange,            col_gray1,    col_gray1},
+	[SchemeTag9]       = { yellow,            col_gray1,    col_gray1},
+	[SchemeLayout]     = { gray3,             col_gray1,    col_gray1},
+	[SchemeTitle]      = { yellow ,           col_gray1,    col_gray1},
+	[SchemeTitleFloat] = { col_gray2,         col_gray1,    col_gray1},
+	[SchemeTitle1]     = { col_gray1,            cyan,      col_gray1},
+	[SchemeTitle2]     = { col_gray1,            cyan,      col_gray1},
+    [SchemeTitle3]     = { col_gray1,            cyan,      col_gray1},
+    [SchemeTitle4]     = { col_gray1,            cyan,      col_gray1},
+    [SchemeTitle5]     = { col_gray1,            cyan,      col_gray1},
+	[SchemeTitle6]     = { col_gray1,            cyan,      col_gray1},
+	[SchemeTitle7]     = { col_gray1,            cyan,      col_gray1},
+	[SchemeTitle8]     = { col_gray1,            cyan,      col_gray1},
+	[SchemeTitle9]     = { col_gray1,            cyan,      col_gray1},
 };
 
 static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4, SchemeTag5, SchemeTag6, SchemeTag7, SchemeTag8, SchemeTag9 };
@@ -95,9 +93,9 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static int nmaster     = 1;    /* number of clients in master area */
-static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster     = 1;    /* number of clients in master area */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
@@ -130,28 +128,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", normbgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", cyan, "-sf", col_gray1, NULL };
 static const char *termcmd[]   = { "st", NULL };
-/*
-+ * Xresources preferences to load at startup
-+ */
-ResourcePref resources[] = {
-		{ "font",               STRING,  &font },
-		{ "dmenufont",          STRING,  &dmenufont },
-		{ "normbgcolor",        STRING,  &normbgcolor },
-		{ "normbordercolor",    STRING,  &normbordercolor },
-		{ "normfgcolor",        STRING,  &normfgcolor },
-		{ "selbgcolor",         STRING,  &selbgcolor },
-		{ "selbordercolor",     STRING,  &selbordercolor },
-		{ "selfgcolor",         STRING,  &selfgcolor },
-		{ "borderpx",          	INTEGER, &borderpx },
-		{ "snap",          		INTEGER, &snap },
-		{ "showbar",          	INTEGER, &showbar },
-		{ "topbar",          	INTEGER, &topbar },
-		{ "nmaster",          	INTEGER, &nmaster },
-		{ "resizehints",       	INTEGER, &resizehints },
-		{ "mfact",      	 	FLOAT,   &mfact },
-};
 
 #include "movestack.c"
 static Key keys[] = {

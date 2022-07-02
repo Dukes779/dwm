@@ -86,6 +86,11 @@ static const Layout layouts[] = {
 	{ NULL,       NULL },
 };
 
+static const char* eww[] = { "eww", "open", "eww", NULL };
+static const Launcher launchers[] = {
+    {eww,               ""}
+};
+
 /* key definitions */
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \

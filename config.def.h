@@ -14,42 +14,42 @@ static const int swallowfloating          = 0;        /* 1 means swallow floatin
 static const int showbar                  = 1;        /* 0 means no bar */
 static const int topbar                   = 1;        /* 0 means bottom bar */
 static const int user_bh                  = 20;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]                = { "Shure Tech Mono Nerd Font:size=10"};
-static const char dmenufont[]             = "Shure Tech Mono Nerd Font:size=10";
+static const char *fonts[]                = { "JetBrainsMono-Regular:size=9", "Material Design Icons Desktop:size=8", "Shure Tech Mono Nerd Font:size=12"};
+static const char dmenufont[]             = "JetBrainsMono-Regular:size=9";
 static const char col_gray1[]             = "#0B0716";
 static const char col_gray2[]             = "#a6e3a1";
 static const char col_gray3[]             = "#6E6C7E";
 static const char col_gray4[]             = "#cdd6f4";
-static const char cyan[]                  = "#E8A2AF" ;
+static const char cyan[]                  = "#96CDFB";
 #include "themes/catppuccin.h" 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = {col_gray4,  col_gray1,col_gray1 },
-	[SchemeSel]  = { col_gray4, cyan,     col_gray1 },
+	[SchemeSel]  = { col_gray4, col_gray1,     col_gray1 },
 
        /* The Beginning of something */
     [SchemeTag]        = { col_gray3 ,        col_gray1,    col_gray1},
-    [SchemeTag1]       = { black ,            col_gray1,    col_gray1},
-    [SchemeTag2]       = { gray3,             col_gray1,    col_gray1},
-    [SchemeTag3]       = { gray2,             col_gray1,    col_gray1},
-    [SchemeTag4]       = { gray4,             col_gray1,    col_gray1},
-    [SchemeTag5]       = { blue,              col_gray1,    col_gray1},
-	[SchemeTag6]       = { green,             col_gray1,    col_gray1},
-	[SchemeTag7]       = { red ,              col_gray1,    col_gray1},
-	[SchemeTag8]       = { orange,            col_gray1,    col_gray1},
-	[SchemeTag9]       = { yellow,            col_gray1,    col_gray1},
-	[SchemeLayout]     = { gray3,             col_gray1,    col_gray1},
-	[SchemeTitle]      = { yellow ,           col_gray1,    col_gray1},
-	[SchemeTitleFloat] = { col_gray2,         col_gray1,    col_gray1},
-	[SchemeTitle1]     = { col_gray1,            cyan,      col_gray1},
-	[SchemeTitle2]     = { col_gray1,            cyan,      col_gray1},
-    [SchemeTitle3]     = { col_gray1,            cyan,      col_gray1},
-    [SchemeTitle4]     = { col_gray1,            cyan,      col_gray1},
-    [SchemeTitle5]     = { col_gray1,            cyan,      col_gray1},
-	[SchemeTitle6]     = { col_gray1,            cyan,      col_gray1},
-	[SchemeTitle7]     = { col_gray1,            cyan,      col_gray1},
-	[SchemeTitle8]     = { col_gray1,            cyan,      col_gray1},
-	[SchemeTitle9]     = { col_gray1,            cyan,      col_gray1},
+    [SchemeTag1]       = { col_gray1,            black,    col_gray1},
+    [SchemeTag2]       = { col_gray1,             gray3,    col_gray1},
+    [SchemeTag3]       = { col_gray1,             gray2,    col_gray1},
+    [SchemeTag4]       = { col_gray1,             gray4,    col_gray1},
+    [SchemeTag5]       = { col_gray1,              blue,    col_gray1},
+	[SchemeTag6]       = { col_gray1,             green,    col_gray1},
+	[SchemeTag7]       = { col_gray1,              red,    col_gray1},
+	[SchemeTag8]       = { col_gray1,            orange,    col_gray1},
+	[SchemeTag9]       = { col_gray1,            yellow,    col_gray1},
+	[SchemeLayout]     = { col_gray1,             col_gray1,    col_gray1},
+	[SchemeTitle]      = { col_gray1,           col_gray1,    col_gray1},
+	[SchemeTitleFloat] = { col_gray1,         col_gray1,    col_gray1},
+	[SchemeTitle1]     = { col_gray1,            col_gray1,      col_gray1},
+	[SchemeTitle2]     = { col_gray1,            col_gray1,      col_gray1},
+    [SchemeTitle3]     = { col_gray1,            col_gray1,      col_gray1},
+    [SchemeTitle4]     = { col_gray1,            col_gray1,      col_gray1},
+    [SchemeTitle5]     = { col_gray1,            col_gray1,      col_gray1},
+	[SchemeTitle6]     = { col_gray1,            col_gray1,      col_gray1},
+	[SchemeTitle7]     = { col_gray1,            col_gray1,      col_gray1},
+	[SchemeTitle8]     = { col_gray1,            col_gray1,      col_gray1},
+	[SchemeTitle9]     = { col_gray1,            col_gray1,      col_gray1},
 };
 
 static const int tagschemes[] = { SchemeTag1, SchemeTag2, SchemeTag3, SchemeTag4, SchemeTag5, SchemeTag6, SchemeTag7, SchemeTag8, SchemeTag9 };
@@ -57,6 +57,8 @@ static const int titleschemes[] = { SchemeTitle1, SchemeTitle2, SchemeTitle3, Sc
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tagsalt[] = { "","", "", "", "", "", "", "", "" };
+static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
 static const char *tagsel[][2] = {
 	{ "#F5C2E7", "#0B0716" },
@@ -70,7 +72,7 @@ static const char *tagsel[][2] = {
 	{ "#DDB6F2", "#0B0716" },
 };
 
-static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinepad	= 1;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
 static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
@@ -186,6 +188,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      togglegaps,     {0} },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_O,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_r,      togglesmartgaps,{0} },
+	{ MODKEY,                       XK_x,      togglealttag,   {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

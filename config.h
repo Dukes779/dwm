@@ -29,18 +29,18 @@ static const char *colors[][3]      = {
 
        /* The Beginning of something */
     [SchemeTag]        = { col_gray3 ,        col_gray1,    col_gray1},
-    [SchemeTag1]       = { col_gray1,             gray3,    col_gray1},
-    [SchemeTag2]       = { gray4,                col_gray1,    col_gray1},
-    [SchemeTag3]       = { col_gray1,             gray2,    col_gray1},
-    [SchemeTag4]       = { col_gray1,             green,    col_gray1},
-    [SchemeTag5]       = { col_gray1,              blue,    col_gray1},
-	[SchemeTag6]       = { col_gray1,             black,    col_gray1},
-	[SchemeTag7]       = { col_gray1,              red,    col_gray1},
-	[SchemeTag8]       = { col_gray1,            orange,    col_gray1},
-	[SchemeTag9]       = { col_gray1,            yellow,    col_gray1},
-	[SchemeLayout]     = {     green,             col_gray1,    col_gray1},
-	[SchemeTitle]      = { col_gray1,           col_gray1,    col_gray1},
-	[SchemeTitleFloat] = { col_gray1,         col_gray1,    col_gray1},
+    [SchemeTag1]       = { col_gray1,            gray3,    col_gray1},
+    [SchemeTag2]       = { green,            col_gray1,    col_gray1},
+    [SchemeTag3]       = { gray4,            col_gray1,    col_gray1},
+    [SchemeTag4]       = { blue,             col_gray1,    col_gray1},
+    [SchemeTag5]       = { black,            col_gray1,    col_gray1},
+	[SchemeTag6]       = { red,              col_gray1,    col_gray1},
+	[SchemeTag7]       = { orange,           col_gray1,    col_gray1},
+	[SchemeTag8]       = { yellow,           col_gray1,    col_gray1},
+	[SchemeTag9]       = { gray2,            col_gray1,    col_gray1},
+	[SchemeLayout]     = { col_gray1,        col_gray1,    col_gray1},
+	[SchemeTitle]      = { col_gray1,        col_gray1,    col_gray1},
+	[SchemeTitleFloat] = { col_gray1,        col_gray1,    col_gray1},
 	[SchemeTitle1]     = { col_gray1,            col_gray1,      col_gray1},
 	[SchemeTitle2]     = { col_gray1,            col_gray1,      col_gray1},
     [SchemeTitle3]     = { col_gray1,            col_gray1,      col_gray1},
@@ -61,7 +61,7 @@ static const char *tagsalt[] = { "󰎤","󰎧", "󰎪", "󰎭", "󰎱", "󰎳", 
 static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
 static const char *tagsel[][2] = {
-	{ "#F5C2E7", "#0B0716" },
+	{ "#F5C2E7", "#96CDFB" },
 	{ "#DDB6F2", "#0B0716" },
 	{ "#C9CBFF", "#0B0716" },
 	{ "#F28FAD", "#0B0716" },
@@ -72,9 +72,9 @@ static const char *tagsel[][2] = {
 	{ "#DDB6F2", "#0B0716" },
 };
 
-static const unsigned int ulinepad	= 4;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
-static const unsigned int ulinevoffset	= 1;	/* how far above the bottom of the bar the line should appear */
+static const unsigned int ulinevoffset	= 0 ;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 static const Rule rules[] = {

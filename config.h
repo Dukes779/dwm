@@ -16,7 +16,7 @@ static const int topbar                   = 1;        /* 0 means bottom bar */
 static const int user_bh                  = 20;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]                = { "JetBrainsMono-Regular:size=9", "Material Design Icons Desktop:pixelsize=11:antialias=true:autohint=true", "Shure Tech Mono Nerd Font:pixelsize=13:antialias=true:autohint=true"};
 static const char dmenufont[]             = "JetBrainsMono-Regular:size=9";
-#include "themes/gruvbox.h" 
+#include "themes/gotham.h" 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = {col_gray4,  col_gray1,col_gray1 },
